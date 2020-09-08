@@ -14,7 +14,8 @@
   ~ License for the specific language governing permissions and limitations
   ~ under the License.
   -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
   <parent>
@@ -77,7 +78,7 @@
       </activation>
       <properties>
         <!-- Use no classifier as we only support x86_64 atm-->
-        <tcnative.classifier />
+        <tcnative.classifier/>
         <skipShadingTestsuite>true</skipShadingTestsuite>
       </properties>
     </profile>
@@ -94,7 +95,7 @@
       <properties>
         <skipNativeImageTestsuite>false</skipNativeImageTestsuite>
         <forbiddenapis.skip>true</forbiddenapis.skip>
-        <testJvm />
+        <testJvm/>
       </properties>
     </profile>
     <!-- JDK15 -->
@@ -105,7 +106,7 @@
       </activation>
       <properties>
         <!-- Not use alpn agent as Java11+ supports alpn out of the box -->
-        <argLine.alpnAgent />
+        <argLine.alpnAgent/>
         <forbiddenapis.skip>true</forbiddenapis.skip>
         <!-- Needed because of https://issues.apache.org/jira/browse/MENFORCER-275 -->
         <enforcer.plugin.version>3.0.0-M3</enforcer.plugin.version>
@@ -126,7 +127,7 @@
       </activation>
       <properties>
         <!-- Not use alpn agent as Java11+ supports alpn out of the box -->
-        <argLine.alpnAgent />
+        <argLine.alpnAgent/>
         <forbiddenapis.skip>true</forbiddenapis.skip>
         <!-- Needed because of https://issues.apache.org/jira/browse/MENFORCER-275 -->
         <enforcer.plugin.version>3.0.0-M3</enforcer.plugin.version>
@@ -147,7 +148,7 @@
       </activation>
       <properties>
         <!-- Not use alpn agent as Java11+ supports alpn out of the box -->
-        <argLine.alpnAgent />
+        <argLine.alpnAgent/>
         <forbiddenapis.skip>true</forbiddenapis.skip>
         <!-- Needed because of https://issues.apache.org/jira/browse/MENFORCER-275 -->
         <enforcer.plugin.version>3.0.0-M3</enforcer.plugin.version>
@@ -168,11 +169,11 @@
         <jdk>12</jdk>
       </activation>
       <properties>
-        <argLine.java9.extras />
+        <argLine.java9.extras/>
         <!-- Export some stuff which is used during our tests -->
         <argLine.java9>--illegal-access=deny ${argLine.java9.extras}</argLine.java9>
         <!-- Not use alpn agent as Java11+ supports alpn out of the box -->
-        <argLine.alpnAgent />
+        <argLine.alpnAgent/>
         <forbiddenapis.skip>true</forbiddenapis.skip>
         <!-- Needed because of https://issues.apache.org/jira/browse/MENFORCER-275 -->
         <enforcer.plugin.version>3.0.0-M3</enforcer.plugin.version>
@@ -193,11 +194,11 @@
         <jdk>11</jdk>
       </activation>
       <properties>
-        <argLine.java9.extras />
+        <argLine.java9.extras/>
         <!-- Export some stuff which is used during our tests -->
         <argLine.java9>--illegal-access=deny ${argLine.java9.extras}</argLine.java9>
         <!-- Not use alpn agent as Java11+ supports alpn out of the box -->
-        <argLine.alpnAgent />
+        <argLine.alpnAgent/>
         <forbiddenapis.skip>true</forbiddenapis.skip>
         <!-- Needed because of https://issues.apache.org/jira/browse/MENFORCER-275 -->
         <enforcer.plugin.version>3.0.0-M3</enforcer.plugin.version>
@@ -215,11 +216,11 @@
         <jdk>10</jdk>
       </activation>
       <properties>
-        <argLine.java9.extras />
+        <argLine.java9.extras/>
         <!-- Export some stuff which is used during our tests -->
         <argLine.java9>--illegal-access=deny --add-modules java.xml.bind ${argLine.java9.extras}</argLine.java9>
         <!-- Not use alpn agent as Java10 supports alpn out of the box -->
-        <argLine.alpnAgent />
+        <argLine.alpnAgent/>
         <forbiddenapis.skip>true</forbiddenapis.skip>
         <!-- Needed because of https://issues.apache.org/jira/browse/MENFORCER-275 -->
         <enforcer.plugin.version>3.0.0-M3</enforcer.plugin.version>
@@ -232,11 +233,11 @@
     <profile>
       <id>java9</id>
       <properties>
-        <argLine.java9.extras />
+        <argLine.java9.extras/>
         <!-- Export some stuff which is used during our tests -->
         <argLine.java9>--illegal-access=deny --add-modules java.xml.bind ${argLine.java9.extras}</argLine.java9>
         <!-- Not use alpn agent as Java9 supports alpn out of the box -->
-        <argLine.alpnAgent />
+        <argLine.alpnAgent/>
         <!-- Skip as maven plugin not works with Java9 yet -->
         <forbiddenapis.skip>true</forbiddenapis.skip>
         <!-- Needed because of https://issues.apache.org/jira/browse/MENFORCER-275 -->
@@ -251,13 +252,14 @@
       <id>boringssl</id>
       <properties>
         <tcnative.artifactId>netty-tcnative-boringssl-static</tcnative.artifactId>
-        <tcnative.classifier />
+        <tcnative.classifier/>
       </properties>
     </profile>
     <profile>
       <id>leak</id>
       <properties>
-        <argLine.leak>-Dio.netty.leakDetectionLevel=paranoid -Dio.netty.leakDetection.targetRecords=32</argLine.leak>
+        <argLine.leak>-Dio.netty.leakDetectionLevel=paranoid -Dio.netty.leakDetection.targetRecords=32
+        </argLine.leak>
       </properties>
     </profile>
     <profile>
@@ -336,7 +338,9 @@
     <netty.build.version>26</netty.build.version>
     <jboss.marshalling.version>1.4.11.Final</jboss.marshalling.version>
     <jetty.alpnAgent.version>2.0.10</jetty.alpnAgent.version>
-    <jetty.alpnAgent.path>"${settings.localRepository}"/org/mortbay/jetty/alpn/jetty-alpn-agent/${jetty.alpnAgent.version}/jetty-alpn-agent-${jetty.alpnAgent.version}.jar</jetty.alpnAgent.path>
+    <jetty.alpnAgent.path>
+      "${settings.localRepository}"/org/mortbay/jetty/alpn/jetty-alpn-agent/${jetty.alpnAgent.version}/jetty-alpn-agent-${jetty.alpnAgent.version}.jar
+    </jetty.alpnAgent.path>
     <argLine.common>
       -server
       -dsa -da -ea:io.netty...
@@ -348,7 +352,7 @@
     <argLine.noUnsafe>-D_</argLine.noUnsafe> <!-- Overridden when 'noUnsafe' profile is active -->
     <argLine.coverage>-D_</argLine.coverage> <!-- Overridden when 'coverage' profile is active -->
     <argLine.printGC>-XX:+PrintGCDetails</argLine.printGC>
-    <argLine.java9 /> <!-- Overridden when 'java9' profile is active -->
+    <argLine.java9/> <!-- Overridden when 'java9' profile is active -->
     <argLine.javaProperties>-D_</argLine.javaProperties>
     <!-- Configure the os-maven-plugin extension to expand the classifier on                  -->
     <!-- Fedora-"like" systems. This is currently only used for the netty-tcnative dependency -->
@@ -361,7 +365,7 @@
     <conscrypt.groupId>org.conscrypt</conscrypt.groupId>
     <conscrypt.artifactId>conscrypt-openjdk-uber</conscrypt.artifactId>
     <conscrypt.version>2.4.0</conscrypt.version>
-    <conscrypt.classifier />
+    <conscrypt.classifier/>
     <jni.classifier>${os.detected.name}-${os.detected.arch}</jni.classifier>
     <logging.config>${project.basedir}/../common/src/test/resources/logback-test.xml</logging.config>
     <logging.logLevel>debug</logging.logLevel>
@@ -764,8 +768,10 @@
             <oldVersionPattern>\d+\.\d+\.\d+\.Final</oldVersionPattern>
             <ignoreMissingClassesByRegularExpressions>
               <!-- ignore everything which is not part of netty itself as the plugin can not handle optional dependencies -->
-              <ignoreMissingClassesByRegularExpression>^(?!io\.netty\.).*</ignoreMissingClassesByRegularExpression>
-              <ignoreMissingClassesByRegularExpression>^io\.netty\.internal\.tcnative\..*</ignoreMissingClassesByRegularExpression>
+              <ignoreMissingClassesByRegularExpression>^(?!io\.netty\.).*
+              </ignoreMissingClassesByRegularExpression>
+              <ignoreMissingClassesByRegularExpression>^io\.netty\.internal\.tcnative\..*
+              </ignoreMissingClassesByRegularExpression>
             </ignoreMissingClassesByRegularExpressions>
             <excludes>
               <exclude>@io.netty.util.internal.UnstableApi</exclude>
@@ -804,7 +810,7 @@
                 </requireMavenVersion>
                 <requireProperty>
                   <regexMessage>
-		     x86_64/AARCH64/PPCLE64/s390x_64 JDK must be used.
+                    x86_64/AARCH64/PPCLE64/s390x_64 JDK must be used.
                   </regexMessage>
                   <property>os.detected.arch</property>
                   <regex>^(x86_64|aarch_64|ppcle_64|s390_64)$</regex>
@@ -890,6 +896,7 @@
                 <sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
                 <sourceDirectory>${project.build.testSourceDirectory}</sourceDirectory>
               </sourceDirectories>
+              <skip>true</skip>
             </configuration>
           </execution>
         </executions>
@@ -965,7 +972,9 @@
             <logback.configurationFile>${logging.config}</logback.configurationFile>
             <logLevel>${logging.logLevel}</logLevel>
           </systemPropertyVariables>
-          <argLine>${argLine.common} ${argLine.printGC} ${argLine.alpnAgent} ${argLine.leak} ${argLine.coverage} ${argLine.noUnsafe} ${argLine.java9} ${argLine.javaProperties}</argLine>
+          <argLine>${argLine.common} ${argLine.printGC} ${argLine.alpnAgent} ${argLine.leak}
+            ${argLine.coverage} ${argLine.noUnsafe} ${argLine.java9} ${argLine.javaProperties}
+          </argLine>
           <properties>
             <property>
               <name>listener</name>
@@ -973,7 +982,7 @@
             </property>
           </properties>
           <jvm>${testJvm}</jvm>
-           <!-- Ensure the whole stacktrace is preserved when an exception is thrown. See https://issues.apache.org/jira/browse/SUREFIRE-1457 -->
+          <!-- Ensure the whole stacktrace is preserved when an exception is thrown. See https://issues.apache.org/jira/browse/SUREFIRE-1457 -->
           <trimStackTrace>false</trimStackTrace>
         </configuration>
       </plugin>
@@ -997,7 +1006,9 @@
               <instructions>
                 <Export-Package>${project.groupId}.*</Export-Package>
                 <!-- enforce JVM vendor package as optional -->
-                <Import-Package>sun.misc.*;resolution:=optional,sun.nio.ch;resolution:=optional,sun.security.*;resolution:=optional,org.eclipse.jetty.npn;version="[1,2)";resolution:=optional,org.eclipse.jetty.alpn;version="[1,2)";resolution:=optional,*</Import-Package>
+                <Import-Package>
+                  sun.misc.*;resolution:=optional,sun.nio.ch;resolution:=optional,sun.security.*;resolution:=optional,org.eclipse.jetty.npn;version="[1,2)";resolution:=optional,org.eclipse.jetty.alpn;version="[1,2)";resolution:=optional,*
+                </Import-Package>
                 <!-- override "internal" private package convention -->
                 <Private-Package>!*</Private-Package>
               </instructions>
@@ -1034,7 +1045,9 @@
               <Bundle-SymbolicName>${project.groupId}.${project.artifactId}.source</Bundle-SymbolicName>
               <Bundle-Vendor>${project.organization.name}</Bundle-Vendor>
               <Bundle-Version>${parsedVersion.osgiVersion}</Bundle-Version>
-              <Eclipse-SourceBundle>${project.groupId}.${project.artifactId};version="${parsedVersion.osgiVersion}";roots:="."</Eclipse-SourceBundle>
+              <Eclipse-SourceBundle>
+                ${project.groupId}.${project.artifactId};version="${parsedVersion.osgiVersion}";roots:="."
+              </Eclipse-SourceBundle>
             </manifestEntries>
           </archive>
         </configuration>
@@ -1116,39 +1129,49 @@
             </goals>
             <configuration>
               <target>
-                <taskdef resource="net/sf/antcontrib/antlib.xml" />
+                <taskdef resource="net/sf/antcontrib/antlib.xml"/>
 
                 <!-- Get the information about the latest commit -->
-                <exec executable="git" outputproperty="gitOutput.lastCommit" resultproperty="gitExitCode.lastCommit" failonerror="false" failifexecutionfails="false">
-                  <arg value="log" />
-                  <arg value="-1" />
-                  <arg value="--format=format:%h %H %cd" />
-                  <arg value="--date=iso" />
+                <exec executable="git" outputproperty="gitOutput.lastCommit"
+                      resultproperty="gitExitCode.lastCommit" failonerror="false"
+                      failifexecutionfails="false">
+                  <arg value="log"/>
+                  <arg value="-1"/>
+                  <arg value="--format=format:%h %H %cd"/>
+                  <arg value="--date=iso"/>
                 </exec>
-                <propertyregex property="shortCommitHash" input="${gitOutput.lastCommit}" regexp="^([0-9a-f]+) .*$" select="\1" casesensitive="true" defaultValue="0" />
-                <propertyregex property="longCommitHash" input="${gitOutput.lastCommit}" regexp="^[0-9a-f]+ ([0-9a-f]{40}) .*$" select="\1" casesensitive="true" defaultValue="0000000000000000000000000000000000000000" />
-                <propertyregex property="commitDate" input="${gitOutput.lastCommit}" regexp="^[0-9a-f]+ [0-9a-f]{40} (.*)$" select="\1" casesensitive="true" defaultValue="1970-01-01 00:00:00 +0000" />
+                <propertyregex property="shortCommitHash" input="${gitOutput.lastCommit}"
+                               regexp="^([0-9a-f]+) .*$" select="\1" casesensitive="true"
+                               defaultValue="0"/>
+                <propertyregex property="longCommitHash" input="${gitOutput.lastCommit}"
+                               regexp="^[0-9a-f]+ ([0-9a-f]{40}) .*$" select="\1" casesensitive="true"
+                               defaultValue="0000000000000000000000000000000000000000"/>
+                <propertyregex property="commitDate" input="${gitOutput.lastCommit}"
+                               regexp="^[0-9a-f]+ [0-9a-f]{40} (.*)$" select="\1" casesensitive="true"
+                               defaultValue="1970-01-01 00:00:00 +0000"/>
 
                 <!-- Get the information abount whether the repository is clean or dirty -->
-                <exec executable="git" outputproperty="gitOutput.repoStatus" resultproperty="gitExitCode.repoStatus" failonerror="false" failifexecutionfails="false">
-                  <arg value="status" />
-                  <arg value="--porcelain" />
+                <exec executable="git" outputproperty="gitOutput.repoStatus"
+                      resultproperty="gitExitCode.repoStatus" failonerror="false"
+                      failifexecutionfails="false">
+                  <arg value="status"/>
+                  <arg value="--porcelain"/>
                 </exec>
                 <if>
-                  <equals arg2="0" arg1="${gitExitCode.repoStatus}" />
+                  <equals arg2="0" arg1="${gitExitCode.repoStatus}"/>
                   <then>
                     <if>
-                      <equals arg2="" arg1="${gitOutput.repoStatus}" />
+                      <equals arg2="" arg1="${gitOutput.repoStatus}"/>
                       <then>
-                        <property name="repoStatus" value="clean" />
+                        <property name="repoStatus" value="clean"/>
                       </then>
                       <else>
-                        <property name="repoStatus" value="dirty" />
+                        <property name="repoStatus" value="dirty"/>
                       </else>
                     </if>
                   </then>
                   <else>
-                    <property name="repoStatus" value="unknown" />
+                    <property name="repoStatus" value="unknown"/>
                   </else>
                 </if>
 
@@ -1159,18 +1182,20 @@
                 <!--
                 <property name="metaInfDir" value="${project.basedir}/src/main/resources/META-INF" />
                 -->
-                <property name="metaInfDir" value="${project.build.outputDirectory}/META-INF" />
-                <property name="versionPropFile" value="${metaInfDir}/${project.groupId}.versions.properties" />
-                <mkdir dir="${metaInfDir}" />
-                <delete file="${versionPropFile}" quiet="true" />
+                <property name="metaInfDir" value="${project.build.outputDirectory}/META-INF"/>
+                <property name="versionPropFile"
+                          value="${metaInfDir}/${project.groupId}.versions.properties"/>
+                <mkdir dir="${metaInfDir}"/>
+                <delete file="${versionPropFile}" quiet="true"/>
 
                 <propertyfile file="${versionPropFile}" comment="Generated by netty-parent/pom.xml">
-                  <entry key="${project.artifactId}.version" value="${project.version}" />
-                  <entry key="${project.artifactId}.buildDate" type="date" value="now" pattern="yyyy-MM-dd HH:mm:ss Z" />
-                  <entry key="${project.artifactId}.commitDate" value="${commitDate}" />
-                  <entry key="${project.artifactId}.shortCommitHash" value="${shortCommitHash}" />
-                  <entry key="${project.artifactId}.longCommitHash" value="${longCommitHash}" />
-                  <entry key="${project.artifactId}.repoStatus" value="${repoStatus}" />
+                  <entry key="${project.artifactId}.version" value="${project.version}"/>
+                  <entry key="${project.artifactId}.buildDate" type="date" value="now"
+                         pattern="yyyy-MM-dd HH:mm:ss Z"/>
+                  <entry key="${project.artifactId}.commitDate" value="${commitDate}"/>
+                  <entry key="${project.artifactId}.shortCommitHash" value="${shortCommitHash}"/>
+                  <entry key="${project.artifactId}.longCommitHash" value="${longCommitHash}"/>
+                  <entry key="${project.artifactId}.repoStatus" value="${repoStatus}"/>
                 </propertyfile>
               </target>
             </configuration>
@@ -1333,7 +1358,7 @@
                     </goals>
                   </pluginExecutionFilter>
                   <action>
-                    <ignore />
+                    <ignore/>
                   </action>
                 </pluginExecution>
                 <pluginExecution>
@@ -1346,7 +1371,7 @@
                     </goals>
                   </pluginExecutionFilter>
                   <action>
-                    <ignore />
+                    <ignore/>
                   </action>
                 </pluginExecution>
                 <pluginExecution>
@@ -1359,7 +1384,7 @@
                     </goals>
                   </pluginExecutionFilter>
                   <action>
-                    <ignore />
+                    <ignore/>
                   </action>
                 </pluginExecution>
                 <pluginExecution>
@@ -1372,7 +1397,7 @@
                     </goals>
                   </pluginExecutionFilter>
                   <action>
-                    <ignore />
+                    <ignore/>
                   </action>
                 </pluginExecution>
                 <pluginExecution>
@@ -1385,7 +1410,7 @@
                     </goals>
                   </pluginExecutionFilter>
                   <action>
-                    <ignore />
+                    <ignore/>
                   </action>
                 </pluginExecution>
                 <pluginExecution>
@@ -1399,7 +1424,7 @@
                     </goals>
                   </pluginExecutionFilter>
                   <action>
-                    <ignore />
+                    <ignore/>
                   </action>
                 </pluginExecution>
                 <pluginExecution>
@@ -1414,7 +1439,7 @@
                     </goals>
                   </pluginExecutionFilter>
                   <action>
-                    <ignore />
+                    <ignore/>
                   </action>
                 </pluginExecution>
               </pluginExecutions>
@@ -1463,9 +1488,12 @@
                   <!-- bundledSignature>jdk-system-out</bundledSignature -->
                 </bundledSignatures>
                 <signaturesFiles>
-                  <signaturesFile>${netty.dev.tools.directory}/forbidden/signatures.txt</signaturesFile>
+                  <signaturesFile>${netty.dev.tools.directory}/forbidden/signatures.txt
+                  </signaturesFile>
                 </signaturesFiles>
-                <suppressAnnotations><annotation>**.SuppressForbidden</annotation></suppressAnnotations>
+                <suppressAnnotations>
+                  <annotation>**.SuppressForbidden</annotation>
+                </suppressAnnotations>
               </configuration>
               <phase>compile</phase>
               <goals>
@@ -1487,9 +1515,12 @@
                   <!-- bundledSignature>jdk-deprecated</bundledSignature -->
                 </bundledSignatures>
                 <signaturesFiles>
-                  <signaturesFile>${netty.dev.tools.directory}/forbidden/signatures.txt</signaturesFile>
+                  <signaturesFile>${netty.dev.tools.directory}/forbidden/signatures.txt
+                  </signaturesFile>
                 </signaturesFiles>
-                <suppressAnnotations><annotation>**.SuppressForbidden</annotation></suppressAnnotations>
+                <suppressAnnotations>
+                  <annotation>**.SuppressForbidden</annotation>
+                </suppressAnnotations>
               </configuration>
               <phase>test-compile</phase>
               <goals>
